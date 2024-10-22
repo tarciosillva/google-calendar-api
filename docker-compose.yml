@@ -1,0 +1,25 @@
+version: '3.8'
+
+networks:
+  redis_network:
+    name: redis_network
+  nginx-proxy-manager:
+    external: true
+    
+services:
+  calendar-api:
+    build: .
+    container_name: calendar-api
+    ports:
+      - '3002:3002'
+    networks:
+      - redis_network
+      - nginx-proxy-manager
+    environment:
+      - REDIS_HOST: redis
+      - REDIS_PORT: 6379
+      - GOOGLE_CLIENT_ID: ""
+      - GOOGLE_CLIENT_SECRET: ""
+      - GOOGLE_REDIRECT_URI: ""
+    depends_on:
+      - redis
