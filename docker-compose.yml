@@ -16,10 +16,9 @@ services:
       - redis_network
       - nginx-proxy-manager
     environment:
-      - REDIS_HOST: redis
-      - REDIS_PORT: 6379
-      - GOOGLE_CLIENT_ID: ""
-      - GOOGLE_CLIENT_SECRET: ""
-      - GOOGLE_REDIRECT_URI: ""
-    depends_on:
-      - redis
+      - PORT=3002
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - GOOGLE_CLIENT_ID=
+      - GOOGLE_CLIENT_SECRET=
+      - GOOGLE_REDIRECT_URI=
